@@ -15,8 +15,9 @@
             <a class="link" href="table.html">Таблица</a>
         </div>
     </header>
-    <caption>Таблица четкая !!</caption>
+    
     <table>
+        <caption>Таблица четкая !!</caption>
         <thead>
             <tr>
                 <th>№</th>
@@ -58,5 +59,41 @@
             </tr>
         </tbody>
     </table>
+    <form id="addform">   
+        <fieldset>   
+            <legend>Adding new user:</legend>   
+            <label>№:</label>   
+            <input type="number" name="number" required><br/>   
+            <label>First Name:</label>   
+            <input type="text" name="first" required><br/>   
+            <label>Last Name:</label>
+            <input type="text" name="last" required><br/>
+            <label>Username:</label>
+            <input type="text" name="username" required><br/>   
+            <input type="submit" value="Add" class="button">
+        </fieldset>   
+    </form>   
+
+    <script>   
+        function addRecord(form) {  
+        const table = document.querySelector("table");  
+        const newRow = table.insertRow(-1);  
+          
+        const number = form.number.value;  
+        const first = form.first.value;  
+        const last = form.last.value;  
+        const username = form.username.value;  
+        newRow.insertCell(0).innerText = number;  
+        newRow.insertCell(1).innerText = first;  
+        newRow.insertCell(2).innerText = last;  
+        newRow.insertCell(3).innerText = username;  
+        form.reset();  
+    }  
+ 
+    document.getElementById("addform").addEventListener("submit", function (e) {     
+        e.preventDefault();     
+        addRecord(e.target);     
+    });     
+    </script>
 </body>
 </html>
